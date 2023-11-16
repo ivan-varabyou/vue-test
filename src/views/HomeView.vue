@@ -34,6 +34,7 @@ console.log('rerender', count)
 const message = ref('hello')
 // slot v1 =  v-slot:country="{ place }"
 // slot v2 =  #city="{ place }"
+// slots === children
 // editing emit v-model:message="message"
 // const emit = defineEmits(['update', 'update:message'])
 //    <input :value="message" @input="$emit('update:message', $event.target.value)" />
