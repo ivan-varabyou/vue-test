@@ -32,10 +32,21 @@ function catchUpdate() {
 console.log('rerender', count)
 
 const message = ref('hello')
+// slot v1 =  v-slot:country="{ place }"
+// slot v2 =  #city="{ place }"
+// editing emit v-model:message="message"
+// const emit = defineEmits(['update', 'update:message'])
+//    <input :value="message" @input="$emit('update:message', $event.target.value)" />
 </script>
 
 <template>
-  <TestComponent v-model:message="message" v-model:count="count" @update="catchUpdate" />
+  <TestComponent v-model:message="message" v-model:count="count" @update="catchUpdate">
+    <template v-slot:country="{ place, id, log }">
+      {{ place }} {{ id }} <button @click="log">log</button>
+    </template>
+    <template #city="{ place, id }"> {{ place }} {{ id }} </template>
+  </TestComponent>
+
   <div v-show="showTest">Hello Vue</div>
 
   <button @click="incriment">incriment +</button>
